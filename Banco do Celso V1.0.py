@@ -1,13 +1,44 @@
-#Projeto Banco
+from tkinter import *
+
+import grid as grid
+import texto as texto
 
 saldo = 0
 escolha = 0
+
+
+janela = Tk()
+janela.title(' MENU BANCO DO CELSO ')
+janela.geometry('300x300')
+
+
+menu_orientacao = Label(janela, text='Escolha do Menu:')
+menu_orientacao.grid(column=10, row=0)
+menu_orientacao.grid(padx= 10,pady=10)
+
+
+opcao_orientacao = Label(janela, text= 'ESCOLHA AS OPCAOES A BAIXO')
+opcao_orientacao.grid(column=10, row=3)
+opcao_orientacao.grid(padx= 10,pady=3)
+
+botao = Button(janela, text= 'SALDO',command='text')
+botao.grid(column= 10, row=40)
+
+
+
+texto_menu = Label(janela, text= ' ')
+texto_menu.grid(column=10, row=70)
+texto_menu.grid(padx= 10,pady=30)
+
+
 
 print('\033[32m ---------BEM VINDOS AO BANCO DO CELSO ----------\033[m')
 
 while escolha == 1 or 2 or 3 or 4 or 5:
 
-    print('''
+
+
+    texto = f'''
     ------------BANCO DO CELSO-------
 
     [1] SALDO
@@ -16,11 +47,20 @@ while escolha == 1 or 2 or 3 or 4 or 5:
     [4] EMPRESTIMO
     [5] SAIR
 
-    ''')
+    '''
+    print(texto)
+    texto_menu['text'] = texto
+
+    janela = mainloop()
     escolha = int(input(' ESCOLHA A OPCAO A  CIMA DE [1 A 4 E PRESS ENTER ] : '))
+
+
+
     # -------------------------------------------------------------------------------------------
     if escolha == 1:
         print(f' Voce esta no menu SALDO  : \n SEU SALDO E DE R$: \033[33m{saldo:.2f}\033[m')
+
+
     # -------------------------------------------------------------------------------------------
     if escolha == 2:
 
@@ -56,11 +96,9 @@ while escolha == 1 or 2 or 3 or 4 or 5:
         autorizado = salarioAtual * 10 / 100
         print(f'AUTORIZADO O VALOR DE R$: {autorizado:.2f}')
 
-        autorizarparcela=  autorizado / parcelas
+        autorizarparcela = autorizado / parcelas
 
-
-
-        if autorizado > autorizarparcela :
+        if autorizado > autorizarparcela:
             print(f'Valor das parcelas {parcelas} de R$: {autorizarparcela:.2f}')
             print('EMPRESTIMO APROVADO!!!')
             emprestimo = int(input('QUAL E O VALOR DE EMPRESTIMO: '))
@@ -73,4 +111,5 @@ while escolha == 1 or 2 or 3 or 4 or 5:
     if escolha == 5:
         break
 # -------------------------------------------------------------------------------------------
+
 print('CONTA ENCERRADA !!! Volte sempre !!! ')
